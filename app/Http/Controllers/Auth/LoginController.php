@@ -39,6 +39,6 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-        return view('login.masuk');
+        return view('login.user.masuk');
     }
 }

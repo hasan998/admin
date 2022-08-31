@@ -13,7 +13,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('halamanadmin')
+        return view('admin.dashboard');
+    }
+
+    public function produk()
+    {
+        return view('admin.produk.produk');
     }
 
     /**

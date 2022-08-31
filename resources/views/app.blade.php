@@ -1,141 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/front-end/images/ftwardise/logo.jpg') }}">
+        <link rel="icon" type="image/png" href="{{ asset('assets/front-end/images/ftwardise/logo.jpg') }}">
+        <title>Wardise Makanan & Minuman</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-<head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="{{ asset('assets/images/ftwardise/logo.jpg') }}" type="">
-  <title> CAFDISE </title>
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/open-iconic-bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/animate.css')}}">
+        
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/owl.carousel.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/owl.theme.default.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/magnific-popup.css')}}">
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <!-- nice select  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
-  <!-- font awesome style -->
-  <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-  <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" />
-</head>
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/aos.css')}}">
 
-<body>
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/ionicons.min.css')}}">
 
-  <div class="hero_area">
-    <div class="bg-box">
-      <img src="{{ asset('assets/images/ftwardise/toko.jpeg') }}" alt="">
-    </div>
-    @yield('navbar')
-  </div>
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/bootstrap-datepicker.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/jquery.timepicker.css')}}">
 
- @yield('konten')
- 
+        
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/flaticon.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/icomoon.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/front-end/css/style.css')}}">
 
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 footer-col">
-          <div class="footer_contact">
-            <h4>
-              Kontak Kami
-            </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Lokasi
-                </span>
-              </a>
-              <a href="tel:+085966254648">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                +62 85966254648
-                </span>
-              </a>
-              <a href="mailto:cafeparadise@gmail.com">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  cafeparadise@gmail.com
-                </span>
-              </a>
+        <!-- Icon -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+
+    <body class="goto-here">
+      @yield('navbar')
+      @yield('content')
+      
+      <footer class="ftco-footer ftco-section">
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md">
+              <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2">Wardise</h2>
+                <p>Kami menyediakan makanan dan minuman, toko kami terletak di daerah tambun. Silahkan pesan makanan dan minuman di kami gratis ongkir</p>
+                <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                  <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                  <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                  <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="ftco-footer-widget mb-4 ml-md-5">
+                <h2 class="ftco-heading-2">Menu</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-2 d-block">Shop</a></li>
+                  <li><a href="#" class="py-2 d-block">About</a></li>
+                  <li><a href="#" class="py-2 d-block">Journal</a></li>
+                  <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2">Have a Questions?</h2>
+                <div class="block-23 mb-3">
+                  <ul>
+                    <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 footer-col">
-          <div class="footer_detail">
-            <a href="" class="footer-logo">
-              CAFDISE
-            </a>
-            <p>
-             ENJOY YOUR MEAL ! 
-            </p>
-            <div class="footer_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <!-- <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a> -->
-              <!-- <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a> -->
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              
-                <!-- <i class="fa fa-pinterest" aria-hidden="true"></i> -->
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <h4>
-            Jam Buka
-          </h4>
-          <p>
-            Setiap Hari
-          </p>
-          <p>
-            10.00 - 23.00
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- footer section -->
+      </footer>
+      
+    
 
-  <!-- jQery -->
-  <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
-  <!-- popper js -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <!-- bootstrap js -->
-  <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
-  <!-- owl slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- isotope js -->
-  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-  <!-- nice select -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-  <!-- custom js -->
-  <script src="{{ asset('assets/js/custom.js') }}"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
-  <!-- End Google Map -->
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-</body>
 
+    <script src="{{ asset('assets/front-end/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/jquery-migrate-3.0.1.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/popper.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/jquery.easing.1.3.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/jquery.waypoints.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/jquery.stellar.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/aos.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/jquery.animateNumber.min.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/scrollax.min.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{{ asset('assets/front-end/js/google-map.js')}}"></script>
+    <script src="{{ asset('assets/front-end/js/main.js')}}"></script>
+      
+    </body>
 </html>

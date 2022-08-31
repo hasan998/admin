@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'login.user.masuk';
 
     /**
      * Create a new controller instance.
@@ -42,7 +42,7 @@ class RegisterController extends Controller
     }
     public function showRegistrationForm()
     {
-        return view('login.register');
+        return view('login.user.register');
     }
     /**
      * Get a validator for an incoming registration request.

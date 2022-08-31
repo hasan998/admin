@@ -19,7 +19,7 @@ class LoginAdminController extends Controller
 
     public function index()
     {
-        return view('admin.masuk');
+        return view('login.admin.masuk');
     }
 
     public function login(Request $request)
