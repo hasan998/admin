@@ -32,7 +32,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./pages/profile.html">
+                        <a class="nav-link " href="{{ route('user.index') }}">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg class="text-dark" width="16px" height="16px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <title>customer-support</title> <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Rounded-Icons" transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero"> <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)"> <g id="customer-support" transform="translate(1.000000, 0.000000)"> <path class="color-background" d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z" id="Path" opacity="0.59858631"></path> <path class="color-foreground" d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z" id="Path"></path> <path class="color-foreground" d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z" id="Path"></path> </g> </g> </g> </g> </svg>
       
@@ -57,7 +57,10 @@
                 </ul>
             </div>
             <div class="sidenav-footer mx-3 mt-9">
-                <a href="{{ route('admin.logout') }}" class="btn btn-dark btn-sm w-100 mb-3">Keluar</a>
+                <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-dark btn-sm w-100 mb-3">Keluar</a>
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                    @csrf
+                </form>
             </div>
         </aside>
     <!-- Sidebar -->
@@ -77,7 +80,7 @@
                                 <li class="nav-item d-flex align-items-center">
                                     <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                                         <i class="fa fa-user me-2"></i>
-                                        <span class="d-sm-inline d-none">Admin</span>
+                                        <span class="d-sm-inline d-none">{{ Auth::user()->name }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -106,7 +109,7 @@
                                             <div class="numbers">
                                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Pesanan</p>
                                                 <h5 class="font-weight-bolder">
-                                                    5
+                                                    {{ $pesanan->count() }}
                                                 </h5>
                                             </div>
                                         </div>
@@ -127,7 +130,7 @@
                                             <div class="numbers">
                                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">User</p>
                                                 <h5 class="font-weight-bolder">
-                                                    10
+                                                    {{ $user->count() }}
                                                 </h5>
                                             </div>
                                         </div>
@@ -148,7 +151,7 @@
                                             <div class="numbers">
                                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Produk</p>
                                                 <h5 class="font-weight-bolder">
-                                                    15
+                                                    {{ $produk->count() }}
                                                 </h5>
                                             </div>
                                         </div>
@@ -166,8 +169,12 @@
 
                 <!-- Card -->
                     <div class="card card-frame my-5">
-                        <div class="card-body">
-                            Selamat datang kembali, Admin
+                        <div class="card-body px-5">
+                            <span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Selamat Datang Kembali, </span>
+                            <div class="card-title h5 d-block text-darker">{{ Auth::user()->name }}</div>
+                            <p class="card-description mb-4">
+                                “Apa yang Anda butuhkan untuk memulai bisnis? Tiga hal sederhana: kenali produk Anda lebih baik dari siapa pun, kenali pelanggan Anda, dan miliki hasrat membara untuk sukses.” — Dave Thomas
+                            </p>
                         </div>
                     </div>
                 <!-- Card -->

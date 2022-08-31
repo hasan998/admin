@@ -25,41 +25,42 @@
 								<p>Belum Memiliki Akun?</p>
 								<a href="{{route('register')}}" class="btn btn-white btn-outline-white">Daftar</a>
 							</div>
-			      </div>
+			     		 </div>
 						<div class="login-wrap p-4 p-lg-5">
-			      	<div class="d-flex text-center">
-			      		<div class="w-100">
-			      			<h3 class="mb-4">Masuk</h3>
-			      		</div>
-			      	</div>
-							<form action="#" class="signin-form">
-			      		<div class="form-group mb-3">
-			      			<label class="label" for="name">Username</label>
-			      			<input type="text" name="name"class="form-control" placeholder="Username" required>
-			      		</div>
-		            <div class="form-group mb-3">
-		            	<label class="label" for="password">Password</label>
-		              <input type="password" name="password"class="form-control" placeholder="Password" required>
-		            </div>
-		            <div class="form-group">
-		            	<button type="submit" class="mt-4 form-control btn btn-primary submit px-3">Masuk</button>
-		            </div>
-					<div class="form-group d-flex justify-content-between">
-						<a href="{{ route('beranda.index') }}" class="form-control btn btn-primary submit">Kembali</a>
-						<a href="{{ route('password.request') }}" class="form-control btn btn-primary submit">Lupa Password</a>
-					</div>
-		          </form>
-		        </div>
-		      </div>
+							<div class="d-flex text-center">
+								<div class="w-100">
+									<h3 class="mb-4">Masuk</h3>
+								</div>
+							</div>
+							<form action="{{ route('login') }}" method="POST" class="signin-form">
+								@csrf
+								<div class="form-group mb-3">
+									<label class="label" for="name">Username</label>
+									<input type="email" name="name"class="form-control" placeholder="Username" required>
+								</div>
+								<div class="form-group mb-3">
+									<label class="label" for="password">Password</label>
+									<input type="password" name="password"class="form-control" placeholder="Password" required>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="mt-4 form-control btn btn-primary submit px-3">Masuk</button>
+								</div>
+								<div class="form-group d-flex justify-content-between">
+									<a href="{{ route('beranda.index') }}" class="form-control btn btn-primary submit">Kembali</a>
+									<a href="{{ route('password.request') }}" class="form-control btn btn-primary submit">Lupa Password</a>
+								</div>
+							</form>
+						</div>
+		      		</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<script src="{{ asset('assets/masuk/js/jquery.min.js') }}"></script>
-  <script src="{{ asset('assets/masuk/js/popper.js') }}"></script>
-  <script src="{{ asset('assets/masuk/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/masuk/js/main.js') }}"></script>
+	<script src="{{ asset('assets/masuk/js/popper.js') }}"></script>
+	<script src="{{ asset('assets/masuk/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('assets/masuk/js/main.js') }}"></script>
 
 	</body>
 </html>

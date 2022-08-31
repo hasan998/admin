@@ -13,9 +13,17 @@
             <li class="nav-item active"><a href="{{ route('beranda.index') }}" class="nav-link">Beranda</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('menu.index') }}">Menu</a></li>
             <li class="nav-item"><a href="{{ route('tentangKami.index') }}" class="nav-link">Tentang Kami</a></li>
-            {{-- <li class="nav-item"><a href="about.html" class="nav-link">Riwayat Pembelian</a></li> --}}
-            <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Masuk</a></li>
-            {{-- <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li> --}}
+            @auth
+              <li class="nav-item"><a href="{{ route('riwayat.index') }}" class="nav-link">Riwayat Pembelian</a></li>
+              <li class="nav-item"><a href="{{ route('profil.index') }}" class="nav-link">{{ Auth::user()->name }}</a></li>
+              @if ($pesananTotal == 0)
+                <li class="nav-item cta cta-colored"><a href="{{ route('keranjang.index') }}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+              @else  
+                <li class="nav-item cta cta-colored"><a href="{{ route('keranjang.index') }}" class="nav-link"><span class="icon-shopping_cart"></span>[{{ $pesananTotal }}]</a></li>
+              @endif
+            @else
+              <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Masuk</a></li>
+            @endauth
           </ul>
         </div>
       </div>
@@ -30,6 +38,9 @@
             <div class="col-md-12 mb-5 heading-section text-center ftco-animate">
               <span class="subheading">Keranjang</span>
               <h2 class="mb-4">Pesanan Kamu</h2>
+              @if (session('status'))
+                <p style="color: green">{{ session('status') }}</p>
+              @endif
             </div>
           </div>   		
         </div>
@@ -50,27 +61,26 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="text-center">
-                      
-                      <td class="image-prod"><div class="img" style="background-image:url({{ asset('assets/front-end/images/product-3.jpg') }});"></div></td>
-                      
-                      <td class="product-name">
-                        <h3>Bell Pepper</h3>
-                        <p>Far far away, behind the word mountains, far from the countries</p>
-                      </td>
-                      
-                      <td class="price">$4.90</td>
-                      
-                      <td class="quantity">
-                        <div class="input-group mb-3">
-                          <input type="text" name="quantity" class="quantity form-control input-number" value="1" disabled>
-                        </div>
-                      </td>
-                      
-                      <td class="total">$4.90</td>
-                      <td class="total">&nbsp;</td>
-                      <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-                    </tr><!-- END TR-->
+                    @forelse ($pesananDetail as $item)
+                      <tr class="text-center">
+                        <td class="image-prod"><div class="img" style="background-image:url({{ asset('images/produk/'.$item->produk->gambar)}});"></div></td>
+                        <td class="product-name">
+                          <h3>{{ $item->produk->nama_produk }}</h3>
+                          <p>{{ $item->produk->keterangan }}</p>
+                        </td>
+                        <td class="price">Rp. {{ number_format($item->produk->harga_produk, 0, ',','.') }}</td>
+                        <td class="quantity">
+                          <div class="input-group mb-3">
+                            <input type="text" name="quantity" class="quantity form-control input-number" value="{{ $item->jumlah_pesanan }}" disabled>
+                          </div>
+                        </td>
+                        <td class="total">Rp. {{ number_format($item->total_harga, 0, ',','.') }}</td>
+                        <td class="total">&nbsp;</td>
+                        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                      </tr>
+                    @empty
+                        
+                    @endforelse
                   </tbody>
                 </table>
               </div>

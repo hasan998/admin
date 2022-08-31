@@ -20,15 +20,17 @@
 					<div class="wrap d-md-flex">
 						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
 							<div class="text w-100">
-								<h2>Selamat Datang </h2>
-								<p>Sudah Memiliki Akun?</p>
-								<a href="#" class="btn btn-white btn-outline-white">Daftar</a>
+								<h2>Admin Wardise</h2>
+								<p>Selamat Datang Kembali Admin Wardise</p>
 							</div>
 			      </div>
 						<div class="login-wrap p-4 p-lg-5">
 			      	<div class="d-flex text-center">
 			      		<div class="w-100">
 			      			<h3 class="mb-4">Masuk</h3>
+							@if (session('status'))
+								<p style="color: red">{{ session('status') }}</p>
+							@endif
 			      		</div>
 			      	</div>
 							<form action="{{route('adminlogin.login')}}" method="post" class="signin-form">
@@ -42,15 +44,8 @@
 		              <input type="password" name="password"class="form-control" placeholder="Password" required>
 		            </div>
 		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary submit px-3">Masuk</button>
-						<a href="{{url('/')}}" class="mt-3 form-control btn btn-primary submit px-3">Kembali</a>
-		            </div>
-		            <div class="form-group d-md-flex">
-		            	<div class="w-50 text-left">
-									</div>
-									<div class="w-50 text-md-right">
-										<a href="#">Lupa password</a>
-									</div>
+		            	<button type="submit" class="mt-3 form-control btn btn-primary submit px-3">Masuk</button>
+						<a href="{{ route('beranda.index') }}" class="mt-3 form-control btn btn-primary submit px-3">Kembali</a>
 		            </div>
 		          </form>
 		        </div>

@@ -10,9 +10,10 @@ class PesananDetail extends Model
     use HasFactory;
     protected $guarded = ['pesanandetail_id'];
     protected $primaryKey = 'pesanandetail_id';
+    
     public function produk()
     {
-        return $this->belongsTo('App\Models\Bproduk', 'produk_id', 'produk_id');
+        return $this->belongsTo('App\Models\Produk', 'produk_id', 'produk_id');
     }
 
     public function pesanan()

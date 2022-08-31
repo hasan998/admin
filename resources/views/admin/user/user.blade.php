@@ -22,7 +22,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('produk.index') }}">
+                        <a class="nav-link" href="{{ route('produk.index') }}">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg class="text-dark" width="16px" height="16px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <title>shop </title> <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Rounded-Icons" transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero"> <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)"> <g id="shop-" transform="translate(0.000000, 148.000000)"> <path class="color-background" d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z" id="Path" opacity="0.598981585"></path> <path class="color-background" d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z" id="Path"></path> </g> </g> </g> </g> </svg>
       
@@ -31,7 +31,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('user.index') }}">
+                        <a class="nav-link active" href="{{ route('user.index') }}">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg class="text-dark" width="16px" height="16px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <title>customer-support</title> <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Rounded-Icons" transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero"> <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)"> <g id="customer-support" transform="translate(1.000000, 0.000000)"> <path class="color-background" d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z" id="Path" opacity="0.59858631"></path> <path class="color-foreground" d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z" id="Path"></path> <path class="color-foreground" d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z" id="Path"></path> </g> </g> </g> </g> </svg>
       
@@ -71,11 +71,7 @@
                 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
                     <div class="container-fluid py-1 px-3">
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Produk</a></li>
-                                <li class="breadcrumb-item text-sm text-white active" aria-current="page">Ubah Produk</li>
-                              </ol>
-                              <h6 class="font-weight-bolder text-white mb-0">Ubah Produk</h6>
+                            <h6 class="font-weight-bolder text-white mb-0">Produk</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
@@ -101,132 +97,85 @@
                 </nav>
             <!-- End Navbar -->
 
+            <!-- Notification -->   
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible text-white border-radius-xl mx-5 px-3 mt-2 mb-0" role="alert">
+                        <span class="text-sm">
+                            {{ session('status') }}
+                        </span>
+                        <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+            <!-- Notification -->
+
             <div class="container-fluid py-4">
-                <!-- Form -->
-                    <div class="col-md-12 mb-lg-0 mb-4 mt-4 px-3">
-                        <div class="card mt-0 px-2 pb-4">
-                            <div class="card-header pb-0 mb-4">
-                                <div class="row">
-                                    <div class="col-lg-6 col-7">
-                                        <h6 class="mb-0">Form</h6>
-                                        <p class="text-sm mb-0">
-                                            <span class="font-weight-bold text-secondary opacity-7">Ubah Data Produk</span>
-                                        </p>
+                <!-- Table -->
+                    <div class="container-fluid py-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mb-4 px-3">
+                                    <div class="row bg-dark border-radius-xl mt-3 p-3 py-4 px-4 mx-2">
+                                        <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start align-items-center mb-4 mb-md-0">
+                                            <h6 class="mb-0 text-white">Tabel Data User</h6>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6 col-5 px-3 my-auto text-end">
-                                        <a class="btn bg-gradient-dark mb-0" href="{{ route('produk.index') }}">
-                                            Kembali
-                                        </a>
+                                    <div class="card-body px-0 pt-0 pb-2 mt-3">
+                                        <div class="table-responsive p-0">
+                                            <table class="table align-items-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Nama User</th>
+                                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Handphone</th>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Alamat</th>
+                                                        <th class="text-secondary opacity-7"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                      @forelse ($user as $item)
+                                                        <tr>
+                                                            <td class="align-middle text-center">
+                                                                <p class="text-sm font-weight-bold mb-0">{{ $loop->iteration }}</p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex px-2 py-1">
+                                                                    <div class="d-flex flex-column justify-content-center">
+                                                                        <h6 class="mb-0 text-sm">{{ $item->name }}</h6>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="align-middle text-center">
+                                                                <p class="text-sm font-weight-bold mb-0">{{ $item->no_telpon }}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="text-sm font-weight-bold mb-0">{{ $user->email }}</p>
+                                                            </td>
+                                                            <td class="align-middle">
+                                                                <span class="text-dark text-xs font-weight-bold">{{ $user->alamat }}</span>
+                                                            </td>
+                                                            <td class="align-middle">
+                                                                <form action="{{ route('user.destroy', $item->user_id) }}" method="POST" class="d-inline" onsubmit="return confirm('Anda yakin ingin menghapus data ini ?')">
+                                                                    @method('delete')
+                                                                    @csrf
+                                                                        <button class="text-secondary bg-white border-0 font-weight-bold text-xs">Hapus</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                      @empty
+
+                                                      @endforelse
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <form action="{{ route('produk.update', $produk->produk_id) }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="row px-4 mb-4">
-                                    <div class="col-md-6">
-                                        <p class="text-sm mb-0 pt-2 px-1">
-                                            <span class="font-weight-bold text-dark">Nama Produk</span>
-                                        </p>
-                                        <div class="input-group input-group-lg input-group-outline my-2 mb-0">
-                                            <input type="text" name="nama_produk" class="form-control form-control-lg" value="{{ old('nama_produk', $produk->nama_produk) }}" autofocus>
-                                        </div>
-                                        @error('nama_produk')      
-                                            <label class="text-xs px-1 mt-2 text-danger">
-                                                {{ $message }}
-                                            </label>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="text-sm mb-0 pt-2 px-1">
-                                            <span class="font-weight-bold text-dark">Harga</span>
-                                        </p>
-                                        <div class="input-group input-group-lg input-group-outline my-2 mb-0">
-                                            <input type="text" name="harga_produk" class="form-control form-control-lg" value="{{ old('harga_produk', $produk->harga_produk) }}">
-                                        </div>
-                                        @error('harga_produk')      
-                                            <label class="text-xs px-1 mt-2 text-danger">
-                                                {{ $message }}
-                                            </label>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="row px-4 mb-4">
-                                    <div class="col-md-6">
-                                        <p class="text-sm mb-0 pt-2 px-1">
-                                            <span class="font-weight-bold text-dark">Jenis Produk</span>
-                                        </p>
-                                        <div class="input-group input-group-lg input-group-outline my-2 mb-0">
-                                            <select name="kategori" id="kategori" class="form-control">
-                                                <option value="">Pilih..</option>
-                                                <option value="Makanan" @if ($produk->kategori == 'Makanan') selected @endif>Makanan</option>
-                                                <option value="Minuman" @if ($produk->kategori == 'Minuman') selected @endif>Minuman</option>
-                                            </select>
-                                        </div>
-                                        @error('kategori')      
-                                            <label class="text-xs px-1 mt-2 text-danger">
-                                                {{ $message }}
-                                            </label>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="text-sm mb-0 pt-2 px-1">
-                                            <span class="font-weight-bold text-dark">Status Produk</span>
-                                        </p>
-                                        <div class="input-group input-group-lg input-group-outline my-2 mb-0">
-                                            <select name="status_produk" id="status_produk" class="form-control">
-                                                <option value="">Pilih..</option>
-                                                <option value="Habis" @if ($produk->status_produk == 'Habis') selected @endif>Habis</option>
-                                                <option value="Ada" @if ($produk->status_produk == 'Ada') selected @endif>Ada</option>
-                                            </select>
-                                        </div>
-                                        @error('status_produk')      
-                                            <label class="text-xs px-1 mt-2 text-danger">
-                                                {{ $message }}
-                                            </label>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="row px-4 mb-4">
-                                    <p class="text-sm mb-0 pt-2 px-3">
-                                        <span class="font-weight-bold text-dark">Foto Produk</span>
-                                    </p>
-                                    <div class="input-group input-group-lg input-group-outline my-2 mb-0">
-                                        <input type="file" name="gambar" class="form-control form-control-lg">
-                                    </div>
-                                    @error('gambar')      
-                                        <label class="text-xs px-3 mt-2 text-danger">
-                                            {{ $message }}
-                                        </label>
-                                    @enderror
-                                </div>
-
-                                <div class="row px-4">
-                                    <p class="text-sm mb-0 pt-2 px-3">
-                                        <span class="font-weight-bold text-dark">Keterangan</span>
-                                    </p>
-                                    <div class="input-group input-group-lg input-group-outline my-2 mb-0">
-                                        <textarea name="keterangan" class="form-control form-control-lg">{{ old('keterangan', $produk->keterangan) }}</textarea>
-                                    </div>
-                                    @error('keterangan')      
-                                        <label class="text-xs px-3 mt-2 text-danger">
-                                            {{ $message }}
-                                        </label>
-                                    @enderror
-                                </div>
-     
-                                <div class="row mt-5 px-4">
-                                    <div class="col-lg-2 ms-auto">
-                                        <button type="submit" class="btn bg-gradient-success mb-0 mt-lg-auto w-100 text-sm">Simpan</button>
-                                    </div>
-                                </div>
-                            </form>
-    
                         </div>
                     </div>
-                <!-- Form -->    
+                <!-- Table -->
             </div>
         </main>
     <!-- Main -->
