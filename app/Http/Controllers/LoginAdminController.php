@@ -19,7 +19,7 @@ class LoginAdminController extends Controller
 
     public function index()
     {
-        return view('admin.masuk');
+        return view('login.admin.masuk');
     }
 
     public function login(Request $request)
@@ -39,13 +39,13 @@ class LoginAdminController extends Controller
             return redirect()->intended(route('dashboard.index'));
         } else {
             // Kondisi ketika login failed
-            return redirect()->back()->with('status', 'Sepertinya ada yang salah dengan email atau password kamu');
+            return back()->with('status', 'Email dan Password Belum Terdaftar');
         }
     }
 
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect('/');
+        return redirect()->route('adminlogin.index');
     }   
 }
