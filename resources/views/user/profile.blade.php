@@ -47,6 +47,12 @@
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-xl-12 ftco-animate">
+                        <div class="col-md-3 mt-3">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-dark btn-sm w-100 mb-3">Keluar</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            </form>
+                        </div>
                         <form action="{{ route('profilUpdate.index', Auth::user()->user_id) }}" method="POST" enctype="multipart/form-data" class="billing-form">
                             @csrf
                             <h3 class="mb-4 billing-heading">Profile</h3>

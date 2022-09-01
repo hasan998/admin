@@ -27,13 +27,16 @@ Route::middleware('auth')->group(function() {
     Route::get('/menu-detail/{produk_id}', [UserController::class, 'menuDetail'])->name('menuDetail.index');
     // ! Halaman Keranjang
     Route::get('/keranjang', [UserController::class, 'cart'])->name('keranjang.index');
+    Route::delete('/keranjang/{pesanandetail_id}/delete', [UserController::class, 'cartDelete'])->name('cart.destroy');
+    Route::post('/keranjang/checkOut', [UserController::class, 'checkOut'])->name('cart.checkOut');
     // ! Halaman Riwayat Pembelian
     Route::get('/riwayat-pembelian', [UserController::class, 'riwayat'])->name('riwayat.index');
+    Route::get('/riwayat-pembelian/{pesanandetail_id}', [UserController::class, 'riwayatDetail'])->name('riwayatDetail.index');
     // ! Halaman Profile
     Route::get('/profile', [UserController::class, 'profil'])->name('profil.index');
     Route::post('/profile/{user_id}', [UserController::class, 'profilUpdate'])->name('profilUpdate.index');
     // ! User Pesan Produk
-    Route::post('/produk/add-to-cart/{produk_id}', [UserController::class, 'pesan'])->name('pesan.store');
+    Route::post('/produk/{produk_id}/add-to-cart', [UserController::class, 'pesan'])->name('pesan.store');
 });
 
 
@@ -53,6 +56,13 @@ Route::middleware('auth:admin')->group(function () {
         // ! Halaman User
         Route::get('/user', [AdminController::class, 'user'])->name('user.index');
         Route::delete('/user/{user_id}/delete', [AdminController::class, 'destroyUser'])->name('user.destroy');
+        // ! Halaman Pesanan
+        Route::get('/pesanan', [AdminController::class, 'pesanan'])->name('pesanan.index');
+        Route::get('/pesanan/{pesanan_id}/edit', [AdminController::class, 'pesananEdit'])->name('pesanan.edit');
+        Route::post('/pesanan/{pesanan_id}', [AdminController::class, 'pesananUpdate'])->name('pesanan.update');
+        // ! Halaman Pesanan Detail
+        Route::get('/pesanan-detail', [AdminController::class, 'pesananDetail'])->name('pesananDetail.index');
+
     });
 });
 

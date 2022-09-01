@@ -48,35 +48,28 @@
                             <table class="table">
                                 <thead class="thead-primary">
                                 <tr class="text-center">
-                                    <th>&nbsp;</th>
-                                    <th>Pembelian Produk</th>
-                                    <th>Harga</th>
-                                    <th>Jumlah</th>
-                                    <th>Total</th>
+                                    <th>Total Harga</th>
+                                    <th>Status</th>
+                                    <th>Tanggal</th>
                                     <th>&nbsp;</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                  @forelse ($pesananAll as $item)
                                     <tr class="text-center">
-                      
-                                        <td class="image-prod"><div class="img" style="background-image:url({{ asset('assets/front-end/images/product-3.jpg') }});"></div></td>
                                         
-                                        <td class="product-name">
-                                          <h3>Bell Pepper</h3>
-                                          <p>Far far away, behind the word mountains, far from the countries</p>
+                                        <td class="price">Rp. {{ number_format($item->total_harga, 0, ',', '.') }}</td>
+                                        
+                                        <td class="price">
+                                          {{ $item->status }}
                                         </td>
                                         
-                                        <td class="price">$4.90</td>
-                                        
-                                        <td class="quantity">
-                                          <div class="input-group mb-3">
-                                            <input type="text" name="quantity" class="quantity form-control input-number" value="1" disabled>
-                                          </div>
-                                        </td>
-                                        
-                                        <td class="total">$4.90</td>
-                                        <td class="total">&nbsp;</td>
-                                      </tr>
+                                        <td class="total">{{ date('d M Y', strtotime($item->tanggal)) }}</td>
+                                        <td class="total"><a href="{{ route('riwayatDetail.index', $item->pesanan_id) }}">Lihat detail</a></td>
+                                      </tr>  
+                                  @empty
+                                      
+                                  @endforelse
                                 </tbody>
                             </table>
                         </div>

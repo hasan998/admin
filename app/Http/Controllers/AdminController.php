@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pesanan;
+use App\Models\PesananDetail;
 use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -40,6 +41,48 @@ class AdminController extends Controller
     {
         $produk = Produk::all();
         return view('admin.produk.produk', compact('produk'));
+    }
+
+    public function pesanan()
+    {
+        $pesanan = Pesanan::all();
+        return view('admin.pesanan.pesanan', compact('pesanan'));
+    }
+
+    public function pesananEdit($pesanan_id)
+    {
+        $pesanan = Pesanan::find($pesanan_id);
+        return view('admin.pesanan.edit', compact('pesanan'));
+    }
+
+    public function pesananUpdate(Request $request, $pesanan_id) 
+    {
+        $request->validate([
+            'status' => 'required',
+            'nama_kurir' => 'required',
+            'ongkir' => 'required|integer',
+        ], [
+            'status.required' => 'Status tidak boleh kosong',
+            'nama_kurir.required' => 'Nama kurir tidak boleh kosong',
+            'ongkir.required' => 'Ongkir tidak boleh kosong',
+            'ongkir.integer' => 'Ongkir harus berbentuk angka',
+        ]);
+
+        $pesanan = Pesanan::find($pesanan_id);
+        $pesanan->update([
+            'status' => $request->status,
+            'nama_kurir' => $request->nama_kurir,
+            'ongkir' => $request->ongkir,
+        ]);
+        $pesanan->save();
+
+        return redirect()->route('pesanan.index')->with('status', "Data Pesanan Berhasil Di Ubah");
+    }
+
+    public function pesananDetail()
+    {
+        $pesananDetail = PesananDetail::all();
+        return view('admin.pesanan_detail', compact('pesananDetail'));
     }
 
     /**

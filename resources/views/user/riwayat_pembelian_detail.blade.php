@@ -36,11 +36,10 @@
         <div class="container">
           <div class="row justify-content-center mb-3 pb-3">
             <div class="col-md-12 mb-5 heading-section text-center ftco-animate">
-              <span class="subheading">Keranjang</span>
+              <span class="subheading">Pembayaran</span>
               <h2 class="mb-4">Pesanan Kamu</h2>
-              @if (session('status'))
-                <p style="color: green">{{ session('status') }}</p>
-              @endif
+              <p>Silahkan anda transfer di rekening <b>BANK BRI Nomor Rekening : 32113-821312-123 <br> dengan nominal : <b> Rp. {{ number_format($pesananUser->total_harga + $pesananUser->ongkir, 0, ',', '.') }} </b> <br> Kemudian konfirmasi melalui via Whatsapp dengan nomor: <b>0827328328</b> <br> 
+                cantumkan nama <b>(Nama harus sesuai dengan akun Wardise)</b></p>
             </div>
           </div>   		
         </div>
@@ -57,11 +56,10 @@
                       <th>Quantity</th>
                       <th>Total</th>
                       <th>&nbsp;</th>
-                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @forelse ($pesananDetail as $item)
+                    @forelse ($pesananDetailAll as $item)
                       <tr class="text-center">
                         <td class="image-prod"><div class="img" style="background-image:url({{ asset('images/produk/'.$item->produk->gambar)}});"></div></td>
                         <td class="product-name">
@@ -76,13 +74,6 @@
                         </td>
                         <td class="total">Rp. {{ number_format($item->total_harga, 0, ',','.') }}</td>
                         <td class="total">&nbsp;</td>
-                        <td class="product-remove">
-                          <form action="{{ route('cart.destroy', $item->pesanandetail_id) }}" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus data ini ?')">
-                            @method('delete')
-                            @csrf
-                            <button style="background-color: red; width: 20px; color: black;" class="ion-ios-close"></button>
-                          </form>
-                        </td>
                       </tr>
                     @empty
                         
@@ -92,28 +83,31 @@
               </div>
             </div>
           </div>
-          
           <div class="row justify-content-end">
             <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
               <div class="cart-total mb-3">
                 <h3>Cart Totals</h3>
                 <p class="d-flex">
                   <span>Subtotal</span>
-                  <span>{{ number_format($pesanan->total_harga, 0, ',', '.') }}</span>
+                  <span>Rp. {{ number_format($pesananUser->total_harga, 0, ',', '.') }}</span>
+                </p>
+                <p class="d-flex">
+                  <span>Ongkir</span>
+                  <span>Rp. {{ number_format($pesananUser->ongkir, 0, ',', '.') }}</span>
+                </p>
+                <p class="d-flex">
+                  <span>Nama Kurir</span>
+                  <span>{{ $pesananUser->nama_kurir }}</span>
                 </p>
                 <hr>
                 <p class="d-flex total-price">
                   <span>Total</span>
-                  <span>{{ number_format($pesanan->total_harga, 0, ',', '.') }}</span>
+                  <span>Rp. {{ number_format($pesananUser->total_harga + $pesananUser->ongkir, 0, ',', '.') }}</span>
                 </p>
               </div>
-              <form action="{{ route('cart.checkOut') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <button type="submit" class="btn btn-primary py-3 px-4" onsubmit="return confirm('Anda yakin ingin check out ?')">Pesan Sekarang</button>
-              </form>
                   </div>
                 </div>
-            </div>
+        </div>
       </section>
     <!-- Keranjang -->
 @endsection

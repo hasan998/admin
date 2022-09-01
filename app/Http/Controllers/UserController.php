@@ -9,94 +9,153 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
+use function PHPUnit\Framework\returnSelf;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
-        if($pesanan == null) {
-            $pesananTotal = 0;
-        } else {
-            $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
-        }
+        if (Auth::user()) {
+            $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
+            ($pesanan == null) ? $pesananTotal = 0 : $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
+
+            $produk = Produk::paginate(4);
+            return view('user.beranda', compact('produk', 'pesananTotal'));
+        } 
+
         $produk = Produk::paginate(4);
-        return view('user.beranda', compact('produk', 'pesananTotal'));
+        return view('user.beranda', compact('produk'));
     }
 
     public function menu()
     {
-        $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
-        if($pesanan == null) {
-            $pesananTotal = 0;
-        } else {
-            $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
-        }
+        if (Auth::user()) {
+            $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
+            ($pesanan == null) ? $pesananTotal = 0 : $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
+
+            $produk = Produk::all();
+            return view('user.menu', compact('produk', 'pesananTotal'));
+        } 
+
         $produk = Produk::all();
-        return view('user.menu', compact('produk', 'pesananTotal'));
+        return view('user.menu', compact('produk'));
     }
 
     public function menuDetail($produk_id)
     {
-        $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
-        if($pesanan == null) {
-            $pesananTotal = 0;
-        } else {
-            $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
-        }
+        if (Auth::user()) {
+            $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
+            ($pesanan == null) ? $pesananTotal = 0 : $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
+
+            $produk = Produk::find($produk_id);
+            return view('user.produk_detail', compact('produk', 'pesananTotal'));
+        } 
+
         $produk = Produk::find($produk_id);
         return view('user.produk_detail', compact('produk', 'pesananTotal'));
     }
 
     public function about()
     {
-        $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
-        if($pesanan == null) {
-            $pesananTotal = 0;
-        } else {
-            $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
-        }
-        return view('user.tentangkami', compact('pesananTotal'));
+        if (Auth::user()) {
+            $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
+            ($pesanan == null) ? $pesananTotal = 0 : $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
+
+            return view('user.tentangkami', compact('pesananTotal'));
+        } 
+
+        return view('user.tentangkami');
     }
 
     public function cart()
     {
         $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
-        if($pesanan == null) {
-            $pesananTotal = 0;
-        } else {
-            $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
-        }
+        ($pesanan == null) ? $pesananTotal = 0 : $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
 
-        $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
         if(!empty($pesanan)) {
             $pesananDetail = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->get();
             return view('user.keranjang', compact('pesanan', 'pesananDetail', 'pesananTotal'));
-        } else {
-            redirect()->route('menu.index');
         }
+            return redirect()->route('menu.index')->with('status', 'Anda belum memesan, silahkan pesan terlebih dahulu');
+    }
+
+    public function cartDelete($pesanandetail_id)
+    {
+         // Mencari pesanan detail id
+         $pesananDetail = PesananDetail::where('pesanandetail_id', $pesanandetail_id)->first();
+         // Mencari pesanan dengan id yang sama dengan pesanan detail
+         $pesanan = Pesanan::where('pesanan_id', $pesananDetail->pesanan_id)->first();
+         $pesananDetail->delete();
+ 
+         // Mencari pesanan detail id yang sama pesanan id
+         $pesananId = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
+         $pesananDetailId = PesananDetail::where('pesanan_id', $pesananId->pesanan_id)->first(); 
+ 
+         if(empty($pesananDetailId)) {
+             $pesanan->delete();
+             return redirect()->route('menu.index')->with('status', 'Keranjang Anda Kosong!, Silahkan Lakukan Pemesanan');
+         } else {
+             // Mengupdate pesanan jumlah harga
+             $total  = $pesanan->total_harga - $pesananDetail->total_harga;
+             $pesanan->update([
+                 'total_harga' => $total,
+             ]);
+             $pesanan->save();
+ 
+             return redirect()->back()->with('status', 'Pesanan Berhasil Dihapus!');
+         }
+    }
+
+    public function checkOut()
+    {
+        $user = User::where('user_id', Auth::user()->user_id)->first();
+        if(empty($user->alamat) || empty($user->no_telpon)){
+            return redirect()->route('profil.index')->with('status', 'Lengkapi Profile Anda Terlebih Dahulu!');
+        } 
+
+        $pesananUpdate = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
+        $pesananUpdate->update([
+            'status' => 'Belum Bayar',
+        ]);
+        $pesananUpdate->save();
+
+        return redirect()->route('menu.index')->with('status', 'Pesanan Berhasil Di Check Out');
     }
 
     public function riwayat()
     {
         $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
-        if($pesanan == null) {
-            $pesananTotal = 0;
-        } else {
-            $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
-        }
-        return view('user.riwayat_pembelian', compact('pesananTotal'));
+        $pesananAll = Pesanan::all()->where('status', '!=', 'Check Out');
+        ($pesanan == null) ? $pesananTotal = 0 : $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
+
+        return view('user.riwayat_pembelian', compact('pesananTotal', 'pesananAll'));
+    }
+
+    public function riwayatDetail($pesanan_id)
+    {
+        $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
+        ($pesanan == null) ? $pesananTotal = 0 : $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
+        $pesananKonfirmasi = Pesanan::where('pesanan_id', $pesanan_id)->where('ongkir', null)->where('nama_kurir', null)->first();
+        $pesananUser = Pesanan::where('pesanan_id', $pesanan_id)->first();
+        $pesananDetailAll = PesananDetail::where('pesanan_id', $pesananUser->pesanan_id)->get();
+        if (!$pesananKonfirmasi == null) {
+            return view('user.konfirmasi', compact('pesananTotal'));
+        } 
+        return view('user.riwayat_pembelian_detail', compact('pesananDetailAll', 'pesananTotal', 'pesananUser'));
     }
 
     public function profil()
     {
-        $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
-        if($pesanan == null) {
-            $pesananTotal = 0;
-        } else {
-            $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
-        }
-        return view('user.profile', compact('pesananTotal'));
+        if (Auth::user()) {
+            $pesanan = Pesanan::where('user_id', Auth::user()->user_id)->where('status', 'Check Out')->first();
+            ($pesanan == null) ? $pesananTotal = 0 : $pesananTotal = PesananDetail::where('pesanan_id', $pesanan->pesanan_id)->count();
+
+            return view('user.profile', compact('pesananTotal'));
+        } 
+        
+        return view('user.profile');
     }
 
     public function profilUpdate(Request $request, $user_id)
@@ -112,7 +171,6 @@ class UserController extends Controller
         ]);
 
         $user = User::find($user_id);
-        dd($user);
         $user->update([
             'no_telpon' => $request->no_telpon,
             'alamat' => $request->alamat,
